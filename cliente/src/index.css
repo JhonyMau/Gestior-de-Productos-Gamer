@@ -1,0 +1,133 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  transition: 0.2s;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* ------------------------- */
+
+.cards{
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.card{
+  width: 250px;
+  max-width: 250px;
+  min-width: 250px;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.195);
+  text-align: center;
+  margin: 10px;
+}
+
+.card:hover{
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.236);
+  cursor: pointer;
+}
+
+.card:hover .nombre{
+  font-weight: bold;
+}
+
+.card p{
+  margin: 0px;
+}
+
+.cont-img{
+  width: 100%;
+}
+
+.cont-img p{
+  padding: 5px 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  font-weight: bold;
+
+  position: absolute;
+  border-radius: 5px;
+
+  margin-left: 4px;
+  margin-top: 4px;
+}
+
+.cont-img img{
+  width: 250px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card .categoria{
+  color: rgb(61, 61, 61);
+  font-size: 0.8rem;
+  margin-top: 10px;
+}
+
+.card .nombre{
+  color: rgb(255, 184, 0);
+}
+
+.card .precio{
+  font-size: 0.8rem;
+}
+
+.card .descripcion{
+  font-size: 0.8rem;
+  color: rgb(47, 47, 47);
+  margin: 10px 0px;
+  margin-bottom: 15px;
+}
+
+.btn-eliminar{
+  padding: 0;
+  text-align: center;
+  border: 1px solid black;
+  width: 26px;
+  height: 26px;
+  border-radius: 13px;
+  position: absolute;
+  right: 5px;
+  font-weight: bold;
+  background-color: white;
+}
+
+.btn-eliminar:hover{
+  background-color: rgba(252, 52, 12, 0.971);
+}
+
+/* --------------------------------- */
+.cont-portada img{
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  margin-top: 30px;
+}
+
+.nav-link:hover{
+  color: aqua !important;
+}
+
+.cont-edit{
+  height: 40px;
+}
+
+.btn-editar{
+  width: 50%;
+  padding: 0;
+  height: 70%;
+}
