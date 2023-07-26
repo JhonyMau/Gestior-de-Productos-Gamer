@@ -4,9 +4,6 @@ import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom'
 
 function ProductoIndividual({producto}){
-    const handleReload = () => {
-        window.location.reload()
-      }
     function borrarProducto(codigo){
         
         axios.post('https://gestordeproductosgaming-api.onrender.com/api/producto/borrarProducto', {codigo})
@@ -18,7 +15,7 @@ function ProductoIndividual({producto}){
             confirmButtonColor: '#F66A0D'
         })
         .then(response =>{
-            handleReload
+            window.location.reload()
         })
     }
 
