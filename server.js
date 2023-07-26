@@ -7,7 +7,7 @@ const path = require('path')
 const archivoBD = require('./conexion')
 
 app.use(cors({
-    origin: "https://frontend-gestor.onrender.com"
+    origin: "https://gestordeproductosgaming.onrender.com"
 }))
 app.use(express.json())
 

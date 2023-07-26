@@ -34,7 +34,7 @@ function AgregarProducto(){
             confirmButtonColor: '#F66A0D'
         })
         .then(response =>{
-            clienteAxios.post('https://backend-gestor.onrender.com/api/producto/agregarproducto', producto)
+            clienteAxios.post('https://gestordeproductosgaming-api.onrender.com/api/producto/agregarproducto', producto)
             .then(res =>{
                 navigate('/listaProductos')
             })

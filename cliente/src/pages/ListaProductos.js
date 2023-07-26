@@ -8,7 +8,7 @@ function ListaProductos(){
     const[dataProductos, setDataProductos] = useState([])
 
     useEffect(()=>{
-        axios.get('https://backend-gestor.onrender.com/api/producto/obtenerproductos')
+        axios.get('https://gestordeproductosgaming-api.onrender.com/api/producto/obtenerproductos')
         .then(res=>{
             setDataProductos(res.data)
         })

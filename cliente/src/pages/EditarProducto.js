@@ -25,7 +25,7 @@ function EditarProducto(){
         codigoAnterior: codigoAnterior
     }
     useEffect(()=>{
-        axios.post('https://backend-gestor.onrender.com/api/producto/infoaeditar', producto)
+        axios.post('https://gestordeproductosgaming-api.onrender.com/api/producto/infoaeditar', producto)
         .then(res=>{
             const dataproducto =res.data
             setCodigo(dataproducto.codigo)
@@ -50,7 +50,7 @@ function EditarProducto(){
             file: file
         }
 
-        clienteAxios.post('https://backend-gestor.onrender.com/api/producto/editarProducto', producto)
+        clienteAxios.post('https://gestordeproductosgaming-api.onrender.com/api/producto/editarProducto', producto)
         .then(res => {
             Swal.fire({
                 title: 'Producto',
@@ -82,7 +82,7 @@ function EditarProducto(){
                         <label className="form-label">Imagen</label>
                         <input type="file" className='form-control' onChange={(e) => {setFile(e.target.files[0])}}/>
                     </div>
-                    <img src={ imagen ? "https://backend-gestor.onrender.com/"+imagen : "https://backend-gestor.onrender.com/imagen_por_defecto.jpg" }></img>
+                    <img src={ imagen ? "https://gestordeproductosgaming-api.onrender.com/"+imagen : "https://gestordeproductosgaming-api.onrender.com/imagen_por_defecto.jpg" }></img>
                 </div>
                 
                 <div className="mb-3">
