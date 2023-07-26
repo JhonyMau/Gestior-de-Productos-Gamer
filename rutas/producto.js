@@ -7,6 +7,9 @@ const sharp = require('sharp')
 const mongoose = require('mongoose')
 const eschema = mongoose.Schema
 
+const path = require('path')
+const fs = require('fs')
+
 const eschemaproducto = new eschema({
     codigo: String,
     nombre: String,
@@ -19,12 +22,9 @@ const eschemaproducto = new eschema({
 const ModeloProducto = mongoose.model('productos', eschemaproducto)
 
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        if(file){
-            cb(null, './cliente/public/uploads')
-        }
-    },
-    filename: (req, file, cb) =>{
+
+    destination: path.join(__dirname, '../uploads/'),
+    filename: (req, file, cb) => {
         if(file){
             const ext = file.originalname.split('.').pop()
             cb(null, `${Date.now()}.${ext}`)

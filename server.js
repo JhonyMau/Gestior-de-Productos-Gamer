@@ -1,14 +1,17 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
+const path = require('path')
 
 //Importar conexion MongoDB
 const archivoBD = require('./conexion')
 
 app.use(cors({
-    origin: "http://localhost:3000"
+    origin: "https://frontend-gestor.onrender.com"
 }))
 app.use(express.json())
+
+app.use(express.static(path.join(__dirname, 'uploads')))
 
 //Importacion del archivo de rutas y modelo producto
 const rutaproducto = require('./rutas/producto')

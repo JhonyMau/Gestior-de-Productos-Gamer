@@ -1,21 +1,22 @@
 import React from 'react'
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import {Link} from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 function ProductoIndividual({producto}){
-    console.log('este es '+producto.file)
+    const navigate = useNavigate();
     function borrarProducto(codigo){
         
-        axios.post('http://localhost:5000/api/producto/borrarProducto', {codigo})
+        axios.post('https://backend-gestor.onrender.com/api/producto/borrarProducto', {codigo})
 
         Swal.fire({
             title: 'Producto',
             text: 'Producto Eliminado',
-            confirmButtonText: 'Ok'
+            confirmButtonText: 'Ok',
+            confirmButtonColor: '#F66A0D'
         })
         .then(response =>{
-            window.location= '/listaProductos'
+            navigate('/listaproductos')
         })
     }
 
@@ -25,7 +26,7 @@ function ProductoIndividual({producto}){
             <div className='cont-img'>
                 <button className='btn-eliminar' onClick={() => {borrarProducto(producto.codigo)}}>X</button>
                 <p>{producto.codigo}</p>
-                <img src={ producto.file ? "uploads/"+producto.file : "uploads/imagen_por_defecto.jpg"}></img>
+                <img src={ producto.file ? "https://backend-gestor.onrender.com/"+producto.file : "https://backend-gestor.onrender.com/imagen_por_defecto.jpg" }></img>
             </div>
 
             <div className='info'>
@@ -36,7 +37,7 @@ function ProductoIndividual({producto}){
             </div>
             
             <div className='cont-edit'>
-                <Link to={`/EditarProducto/${producto.codigo}`}><li className='btn btn-success btn-editar'>Editar</li></Link>
+                <Link to={`/EditarProducto/${producto.codigo}`}><li className='btn-editar'>Editar</li></Link>
             </div>
 
         </div>

@@ -3,9 +3,11 @@ import clienteAxios from '../components/axios/ClienteAxios'
 import axios from 'axios'
 import { useParams } from 'react-router'
 import Swal from 'sweetalert2'
+import Header from '../components/Header'
+import { useNavigate } from 'react-router-dom'
 
 function EditarProducto(){
-
+    const navigate = useNavigate();
     // HOOKS
     const[codigo, setCodigo]=useState('')
     const[nombre, setNombre]=useState('')
@@ -23,7 +25,7 @@ function EditarProducto(){
         codigoAnterior: codigoAnterior
     }
     useEffect(()=>{
-        axios.post('http://localhost:5000/api/producto/infoaeditar', producto)
+        axios.post('https://backend-gestor.onrender.com/api/producto/infoaeditar', producto)
         .then(res=>{
             const dataproducto =res.data
             setCodigo(dataproducto.codigo)
@@ -48,22 +50,25 @@ function EditarProducto(){
             file: file
         }
 
-        clienteAxios.post('http://localhost:5000/api/producto/editarProducto', producto)
+        clienteAxios.post('https://backend-gestor.onrender.com/api/producto/editarProducto', producto)
         .then(res => {
             Swal.fire({
                 title: 'Producto',
                 text: 'Producto Actualizado',
-                confirmButtonText: 'Ok'
+                confirmButtonText: 'Ok',
+                confirmButtonColor: '#F66A0D'
             })
             .then(response =>{
-                window.location= '/listaProductos'
+                navigate('/listaproductos')
             })
         })
 
     }
 
     return(
-        <div className='container mt-5'>
+        <>
+        <Header></Header>
+        <div className='container pt-5 cont-fondo'>
             <h3>Editar producto codigo '{params.codigoproducto}'</h3>
 
             <form className='mt-5'>
@@ -72,12 +77,12 @@ function EditarProducto(){
                     <label className="form-label">Codigo</label>
                     <input type="text" className="form-control" value={codigo} onChange={(e)=>{setCodigo(e.target.value)}}/>
                 </div>
-                <div className="mb-3">
-                    <label className="form-label">Imagen</label>
-                    <input type="file" className='form-control' onChange={(e) => {setFile(e.target.files[0])}}/>
-                    <div className='mb-3 mt-1 cont-img'>
-                        <img src={ imagen ? "../uploads/"+imagen : "../uploads/imagen_por_defecto.jpg"}></img>
+                <div className="mb-3 cont-input-imagen">
+                    <div>
+                        <label className="form-label">Imagen</label>
+                        <input type="file" className='form-control' onChange={(e) => {setFile(e.target.files[0])}}/>
                     </div>
+                    <img src={ imagen ? "https://backend-gestor.onrender.com/"+imagen : "https://backend-gestor.onrender.com/imagen_por_defecto.jpg" }></img>
                 </div>
                 
                 <div className="mb-3">
@@ -96,10 +101,11 @@ function EditarProducto(){
                     <label className="form-label">Descripcion</label>
                     <textarea type="text" className="form-control" value={descripcion} onChange={(e)=>{setDescripcion(e.target.value)}}></textarea>
                 </div>
-                <button onClick={editProducto} type="button" className="btn btn-primary">Editar</button>
+                <button onClick={editProducto} type="button" className="btn-editar-pr">Editar</button>
             
             </form>
         </div>
+        </>
     )
 }
 

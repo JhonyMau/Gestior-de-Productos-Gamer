@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import clienteAxios from '../components/axios/ClienteAxios'
 import Swal from 'sweetalert2'
+import Header from '../components/Header'
+import { useNavigate } from 'react-router-dom'
 
 function AgregarProducto(){
-
+    const navigate = useNavigate();
     // HOOKS
     const[codigo, setCodigo]=useState('')
     const[nombre, setNombre]=useState('')
@@ -28,12 +30,13 @@ function AgregarProducto(){
         Swal.fire({
             title: 'Producto',
             text: 'Producto Agregado',
-            confirmButtonText: 'Ok'
+            confirmButtonText: 'Ok',
+            confirmButtonColor: '#F66A0D'
         })
         .then(response =>{
-            clienteAxios.post('http://localhost:5000/api/producto/agregarproducto', producto)
+            clienteAxios.post('https://backend-gestor.onrender.com/api/producto/agregarproducto', producto)
             .then(res =>{
-                window.location= '/listaProductos'
+                navigate('/listaProductos')
             })
             .then(err => {console.log(err)})
             
@@ -43,7 +46,9 @@ function AgregarProducto(){
     }
 
     return(
-        <div className='container mt-5'>
+        <>
+        <Header></Header>
+        <div className='container pt-5 cont-fondo'>
             <h3>Crear un nuevo producto</h3>
 
             <form className='mt-5'>
@@ -72,10 +77,11 @@ function AgregarProducto(){
                     <label className="form-label">Descripcion</label>
                     <textarea type="text" className="form-control" value={descripcion} onChange={(e)=>{setDescripcion(e.target.value)}}></textarea>
                 </div>
-                <button onClick={addProducto} type="button" className="btn btn-primary">Agregar</button>
+                <button onClick={addProducto} type="button" className="btn-editar-pr">Agregar</button>
             
             </form>
         </div>
+        </>
     )
 }
 
