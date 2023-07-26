@@ -36,7 +36,7 @@ function AgregarProducto(){
         .then(response =>{
             clienteAxios.post('https://gestordeproductosgaming-api.onrender.com/api/producto/agregarproducto', producto)
             .then(res =>{
-                navigate('/listaProductos')
+                navigate('/listaproductos')
             })
             .then(err => {console.log(err)})
             

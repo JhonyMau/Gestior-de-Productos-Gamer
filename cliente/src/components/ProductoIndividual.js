@@ -1,10 +1,12 @@
 import React from 'react'
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import { useNavigate, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function ProductoIndividual({producto}){
-    const navigate = useNavigate();
+    const handleReload = () => {
+        window.location.reload()
+      }
     function borrarProducto(codigo){
         
         axios.post('https://gestordeproductosgaming-api.onrender.com/api/producto/borrarProducto', {codigo})
@@ -16,7 +18,7 @@ function ProductoIndividual({producto}){
             confirmButtonColor: '#F66A0D'
         })
         .then(response =>{
-            navigate('/listaproductos')
+            handleReload
         })
     }
 
